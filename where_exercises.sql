@@ -22,13 +22,13 @@ WHERE last_name LIKE '%q%';
 SELECT *
 FROM employees
 WHERE last_name LIKE 'E%'
-OR last_name LIKE '%e';
+OR last_name LIKE '%E';
 
 SELECT *
 FROM employees
-WHERE last_name LIKE 'E%e';
+WHERE last_name LIKE 'E%E';
 
 SELECT *
 FROM employees
-WHERE last_name LIKE '%q%'
-AND last_name NOT LIKE '%qu%';
+WHERE last_name LIKE '%Q%'
+AND last_name NOT LIKE '%QU%';
