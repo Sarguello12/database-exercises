@@ -1,11 +1,12 @@
 USE employees;
 
 
-SELECT d.dept_name AS Department_name, CONCAT(e.first_name, ' ', e.last_name)
+SELECT dept_name AS Department_name, CONCAT(first_name, ' ', last_name)
 FROM employees e
         JOIN dept_manager dm ON dm.emp_no = e.emp_no
         JOIN departments d ON d.dept_no = dm.dept_no
-WHERE dm.to_date = '9999-01-01';
+WHERE to_date = '9999-01-01'
+ORDER BY dept_name;
 
 
 SELECT d.dept_name AS Department_name, CONCAT(e.first_name, ' ', e.last_name)
@@ -37,5 +38,5 @@ FROM employees e
         JOIN dept_emp de ON e.emp_no = de.emp_no
         JOIN departments d ON de.dept_no = d.dept_no
         JOIN dept_manager dm ON dm.dept_no = d.dept_no
-        JOIN employees e2 ON dm.emp_no = dm.emp_no
-WHERE dm.to_date = '9999-01-01';
+        JOIN employees e2 ON e2.emp_no = dm.emp_no
+WHERE YEAR(de.to_date) = 9999 AND YEAR(dm.to_date) = 9999;
