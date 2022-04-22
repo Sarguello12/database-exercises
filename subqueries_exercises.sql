@@ -19,7 +19,7 @@ SELECT first_name, last_name
 FROM employees
 WHERE emp_no IN (
     SELECT emp_no FROM dept_manager
-    WHERE to_date = '9999-01-01'
+    WHERE year(to_date) = 9999
     )
 AND gender = 'F';
 
@@ -32,10 +32,15 @@ WHERE dept_no IN (
     AND to_date = '9999-01-01'
     );
 
-SELECT first_name, last_name
+SELECT CONCAT(first_name, ' ', last_name) AS name
 FROM employees
 WHERE emp_no IN (
-    SELECT emp_no FROM salaries
-    ORDER BY salary
+    SELECT emp_no
+    FROM salaries
+    WHERE YEAR(to_date) = 9999 AND salary IN (
+        SELECT MAX(salary)
+        FROM salaries
     )
-LIMIT 1;
+);
+
+
