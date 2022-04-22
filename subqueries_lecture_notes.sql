@@ -32,3 +32,4 @@ UPDATE preferences
     SET album_id = (SELECT id FROM albums WHERE name = 'Led Zeppelin IV')
     WHERE album_id = (SELECT id FROM albums WHERE name = 'Rumours')
     AND person_id = (SELECT id FROM persons WHERE first_name = 'Tareq');
+
